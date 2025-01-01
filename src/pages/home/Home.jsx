@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router";
 import { BookOpen, Star, Clock, Filter } from "lucide-react";
 
 export default function Home() {
@@ -41,11 +42,13 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="text-center bg-gradient-to-r from-emerald-500 to-emerald-600 p-8 rounded-md shadow-md">
+      <div className="text-center bg-gradient-to-br from-emerald-400 to-emerald-700 p-8 rounded-md shadow-md">
         <h2 className="text-white font-bold text-xl md:text-3xl mb-4">Start Your Reading Journey Today</h2>
         <p className="text-emerald-50 mb-6">Join SHELF and never lose track of your reading adventures again.</p>
         <div className="flex gap-4 justify-center">
-          <button className="text-sm bg-white text-emerald-600 px-6 py-2 rounded-sm font-bold hover:bg-emerald-50 transition-colors">Sign Up</button>
+          <Link to="/signup" className="text-sm bg-white text-emerald-600 px-6 py-2 rounded-sm font-bold hover:bg-emerald-50 transition-colors">
+            Get Started
+          </Link>
         </div>
       </div>
     </div>

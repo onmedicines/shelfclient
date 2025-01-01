@@ -47,7 +47,7 @@ export default function Root() {
               </NavLink>
             </ul>
           </nav>
-          <section className={`relative before:absolute before:h-full before:w-full ${navbarVisible && "before:opacity-55 before:bg-black"}`}>
+          <section className={`relative`}>
             <Outlet />
           </section>
         </main>
