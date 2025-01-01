@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Hamburger from "../components/Hamburger";
 import { Outlet, NavLink, Link } from "react-router";
 import X from "../components/X";
@@ -12,21 +12,29 @@ export default function Root() {
     success: "",
   });
 
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setStatus({ ...status, error: "", success: "" });
+    }, 3000);
+
+    return () => clearTimeout(timeout);
+  }, [status.error, status.success]);
+
   const toggle = () => {
     setNavbarVisible((prev) => !prev);
   };
 
   return (
     <div id="container" className={`relative min-h-screen max-w-screen overflow-x-hidden ${navbarVisible && "overflow-y-hidden"}`}>
-      <div id="loading-div" className={`z-10 absolute bottom-4 right-4 py-2 px-6 rounded-sm bg-emerald-200 text-emerald-700 font-bold border-2 border-emerald-700 ${status.isLoading ? "transform translate-x-0" : "transform translate-x-[calc(100%+1rem)]"}`}>
+      <div id="loading-div" className={`z-10 absolute bottom-4 right-4 py-2 px-6 rounded-md bg-emerald-200 text-emerald-700 font-bold border-2 border-emerald-700 ${status.isLoading ? "transform translate-x-0" : "transform translate-x-[calc(100%+1rem)]"}`}>
         Loading...
         <br />
         Please wait
       </div>
-      <div id="error-div" className={`z-10 absolute bottom-4 right-4 py-2 px-6 rounded-sm bg-red-200 text-red-700 font-bold border-2 border-red-700 ${status.error ? "transform translate-x-0" : "transform translate-x-[calc(100%+1rem)]"}`}>
+      <div id="error-div" className={`z-10 absolute bottom-4 right-4 py-2 px-6 rounded-md bg-red-200 text-red-700 font-bold border-2 border-red-700 ${status.error ? "transform translate-x-0" : "transform translate-x-[calc(100%+1rem)]"}`}>
         {status.error}
       </div>
-      <div id="success-div" className={`z-10 absolute bottom-4 right-4 py-2 px-6 rounded-sm bg-emerald-200 text-emerald-700 font-bold border-2 border-emerald-700 ${status.success ? "transform translate-x-0" : "transform translate-x-[calc(100%+1rem)]"}`}>
+      <div id="success-div" className={`z-10 absolute bottom-4 right-4 py-2 px-6 rounded-md bg-emerald-200 text-emerald-700 font-bold border-2 border-emerald-700 ${status.success ? "transform translate-x-0" : "transform translate-x-[calc(100%+1rem)]"}`}>
         {status.success}
       </div>
       <header className="w-screen bg-emerald-500">
