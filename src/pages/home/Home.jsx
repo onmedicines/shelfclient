@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div id="home" className="p-6 md:p-8 max-w-3xl mx-auto">
       <div className="text-center mb-12">
-        <h1 className="text-3xl md:text-5xl font-bold text-emerald-600 mb-4">
+        <h1 className="text-3xl md:text-5xl font-bold text-emerald-600 mb-4 mt-8">
           Your bookshelf,
           <br />
           <span className="text-emerald-500">digitally decluttered</span>

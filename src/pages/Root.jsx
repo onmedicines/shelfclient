@@ -39,7 +39,7 @@ export default function Root() {
       </header>
       <div className="h-full max-w-screen-lg m-auto flex flex-col">
         <main className="w-full flex-grow relative">
-          <nav className={`z-10 md:hidden absolute h-screen w-full bg-emerald-500 py-4 transform translate-x-full transition-transform duration-300 ${navbarVisible && "-translate-x-0"}`}>
+          <nav className={`z-10 md:hidden absolute h-screen w-full bg-emerald-500 py-4 transform translate-x-full transition-transform duration-300 ${navbarVisible && "translate-x-0"}`}>
             <ul className="flex flex-col items-center h-full gap-12 text-2xl mt-16 font-bold text-white">
               <NavLink
                 to="/"
