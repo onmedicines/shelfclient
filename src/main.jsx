@@ -4,6 +4,8 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import Root from "./pages/Root.jsx";
 import "./index.css";
 import Home from "./pages/home/Home.jsx";
+import Login from "./pages/home/login.jsx";
+import Signup from "./pages/home/Signup.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -11,6 +13,8 @@ createRoot(document.getElementById("root")).render(
       <Routes>
         <Route path="/" element={<Root />}>
           <Route index element={<Home />}></Route>
+          <Route path="login" element={<Login />}></Route>
+          <Route path="signup" element={<Signup />}></Route>
         </Route>
       </Routes>
     </BrowserRouter>
