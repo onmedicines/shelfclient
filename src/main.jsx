@@ -6,6 +6,8 @@ import "./index.css";
 import Home from "./pages/home/Home.jsx";
 import Login from "./pages/home/login.jsx";
 import Signup from "./pages/home/Signup.jsx";
+import ProtectedUser from "./util/ProtectedUser.jsx";
+import Dashboard from "./pages/dashboard/Dashboard.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -15,7 +17,9 @@ createRoot(document.getElementById("root")).render(
           <Route index element={<Home />}></Route>
           <Route path="login" element={<Login />}></Route>
           <Route path="signup" element={<Signup />}></Route>
-          <Route path="dashboard" element={<div>Dashboard</div>}></Route>
+          <Route element={<ProtectedUser />}>
+            <Route path="dashboard" element={<Dashboard />}></Route>
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>
