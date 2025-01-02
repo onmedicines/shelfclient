@@ -40,7 +40,7 @@ export default function Root() {
       <header className="w-screen bg-emerald-500">
         <div className="relative flex items-center justify-between py-4 px-8 max-w-screen-lg m-auto text-white">
           <Link to="/">
-            <h1 className="text-md font-bold">SHELF</h1>
+            <h1 className="text-lg font-bold">SHELF</h1>
           </Link>
           {!navbarVisible ? (
             <button onClick={toggle} className="md:hidden">
