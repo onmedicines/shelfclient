@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { BookOpen } from "lucide-react";
-import { StateContext } from "../../context/StateContexts";
+import StateContext from "../../context/Context";
 
 export default function Signup() {
   const { setStatus } = useContext(StateContext);

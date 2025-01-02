@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Hamburger from "../components/Hamburger";
 import { Outlet, NavLink, Link } from "react-router";
 import X from "../components/X";
-import { StateContext } from "../context/StateContexts";
+import StateContext from "../context/Context";
 
 export default function Root() {
   const [navbarVisible, setNavbarVisible] = useState(false);
