@@ -28,7 +28,7 @@ export default function Login() {
       setStatus({ error: "", isLoading: false, success: "" });
 
       if (!response.ok) throw new Error(data.message);
-
+      localStorage.setItem("token", data.token);
       navigate("/dashboard");
     } catch (err) {
       setStatus({ error: err.message, isLoading: false, success: "" });

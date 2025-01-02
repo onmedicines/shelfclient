@@ -37,6 +37,7 @@ export default function Signup() {
       setStatus({ error: "", success: "", isLoading: false });
 
       if (!response.ok) throw new Error(data.message);
+      localStorage.setItem("token", data.token);
       navigate("/dashboard");
     } catch (err) {
       setStatus({ error: err.message, success: "", isLoading: false });
