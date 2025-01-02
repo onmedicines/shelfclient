@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import Root from "./pages/Root.jsx";
 import "./index.css";
 import Home from "./pages/home/Home.jsx";
-import Login from "./pages/home/login.jsx";
+import Login from "./pages/home/Login.jsx";
 import Signup from "./pages/home/Signup.jsx";
 import ProtectedUser from "./util/ProtectedUser.jsx";
 import Dashboard from "./pages/dashboard/Dashboard.jsx";
