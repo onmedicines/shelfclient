@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { PlusCircle, Star, Book, Trash } from "lucide-react";
+import { PlusCircle, Star, BookOpen, Trash } from "lucide-react";
 import StateContext from "../../context/Context";
 import { useNavigate } from "react-router";
 
