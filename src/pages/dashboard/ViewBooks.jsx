@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { PlusCircle, Star, Book } from "lucide-react";
+import { PlusCircle, Star, Book, Trash } from "lucide-react";
 import StateContext from "../../context/Context";
 import { useNavigate } from "react-router";
 
@@ -20,24 +20,51 @@ export default function ViewBooks() {
   ]);
 
   useEffect(() => {
-    (async () => {
-      try {
-        setStatus({ error: "", success: "", isLoading: true });
-        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/books`, {
-          headers: {
-            Authorization: `BEARER ${token}`,
-          },
-        });
-        const data = await response.json();
-        setStatus({ error: "", success: "", isLoading: false });
-
-        if (!response.ok) throw new Error(data.message);
-        setBooks(data);
-      } catch (error) {
-        setStatus({ error: error.message, success: "", isLoading: false });
-      }
-    })();
+    getBooks();
   }, []);
+
+  const getBooks = async () => {
+    try {
+      setStatus({ error: "", success: "", isLoading: true });
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/books`, {
+        headers: {
+          Authorization: `BEARER ${token}`,
+        },
+      });
+      const data = await response.json();
+      setStatus({ error: "", success: "", isLoading: false });
+
+      if (!response.ok) throw new Error(data.message);
+      setBooks(data);
+    } catch (error) {
+      setStatus({ error: error.message, success: "", isLoading: false });
+    }
+  };
+
+  const deleteBook = async (bookId) => {
+    try {
+      if (!bookId) throw new Error("Invalid bookId");
+
+      setStatus({ error: "", success: "", isLoading: true });
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/books`, {
+        method: "delete",
+        headers: {
+          Authorization: `BEARER ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ bookId }),
+      });
+      const data = await response.json();
+      setStatus({ error: "", success: "", isLoading: false });
+
+      if (!response.ok) throw new Error(data.message);
+      setStatus({ error: "", success: "Book removed from shelf", isLoading: false });
+
+      getBooks();
+    } catch (error) {
+      setStatus({ error: error.message, success: "", isLoading: false });
+    }
+  };
 
   const capitalizeWord = (word = "") => {
     let firstWord = word.split(" ")[0];
@@ -76,16 +103,16 @@ export default function ViewBooks() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {books.map((book, index) => (
-          <div key={index} className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 overflow-hidden">
+          <div key={book._id} className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 overflow-hidden">
             <div className="p-6">
               <div className="flex items-start justify-between">
                 <div className="flex-1">
                   <h3 className="text-lg font-bold text-gray-800 mb-1">{capitalizeSentence(book.name) || "Untitled"}</h3>
                   <p className="text-gray-600 mb-2">by {capitalizeSentence(book.author) || "Unknown Author"}</p>
                 </div>
-                <div className="p-2 bg-emerald-50 rounded-full">
-                  <Book className="w-5 h-5 text-emerald-500" />
-                </div>
+                <button onClick={() => deleteBook(book._id)} className="p-2 bg-emerald-50 rounded-full">
+                  <Trash className="w-4 h-4 text-red-500 hover:text-red-700" />
+                </button>
               </div>
 
               <div className="flex items-center mb-3">{renderStars(book.rating)}</div>
