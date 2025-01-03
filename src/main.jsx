@@ -9,6 +9,7 @@ import Signup from "./pages/home/Signup.jsx";
 import ProtectedUser from "./util/ProtectedUser.jsx";
 import Dashboard from "./pages/dashboard/Dashboard.jsx";
 import ViewBooks from "./pages/dashboard/ViewBooks.jsx";
+import AddBook from "./pages/dashboard/AddBook.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -22,6 +23,7 @@ createRoot(document.getElementById("root")).render(
             <Route path="dashboard" element={<Dashboard />}>
               <Route index element={<ViewBooks />}></Route>
               <Route path="books" element={<ViewBooks />}></Route>
+              <Route path="add-book" element={<AddBook />}></Route>
             </Route>
           </Route>
         </Route>

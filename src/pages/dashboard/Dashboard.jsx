@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import StatusContext from "../../context/Context";
-import { BookOpen, LogOut, PlusCircle, Star, Book, User } from "lucide-react";
+import { BookOpen, LogOut, User } from "lucide-react";
 import { useNavigate, Outlet } from "react-router";
 
 export default function Dashboard() {

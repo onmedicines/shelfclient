@@ -1,8 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import { PlusCircle, Star, Book } from "lucide-react";
 import StateContext from "../../context/Context";
+import { useNavigate } from "react-router";
 
 export default function ViewBooks() {
+  const navigate = useNavigate();
   const token = localStorage.getItem("token");
   const { setStatus } = useContext(StateContext);
   const [books, setBooks] = useState([
@@ -62,7 +64,11 @@ export default function ViewBooks() {
             {books.length} {books.length == 1 ? "book" : "books"} in your collection
           </p>
         </div>
-        <button className="flex items-center px-4 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors duration-200 text-sm">
+        <button
+          onClick={() => {
+            navigate("/dashboard/add-book");
+          }}
+          className="flex items-center px-4 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors duration-200 text-sm">
           <PlusCircle className="w-4 h-4 xs:mr-2" />
           <span className="hidden xs:block">Add Book</span>
         </button>
