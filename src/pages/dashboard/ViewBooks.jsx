@@ -103,7 +103,7 @@ export default function ViewBooks() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {books.map((book, index) => (
-          <div key={book._id} className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 overflow-hidden">
+          <div key={book._id} className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 overflow-hidden flex flex-col justify-between">
             <div className="p-6">
               <div className="flex items-start justify-between">
                 <div className="flex-1">
