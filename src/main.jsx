@@ -10,6 +10,7 @@ import ProtectedUser from "./util/ProtectedUser.jsx";
 import Dashboard from "./pages/dashboard/Dashboard.jsx";
 import ViewBooks from "./pages/dashboard/ViewBooks.jsx";
 import AddBook from "./pages/dashboard/AddBook.jsx";
+import EditBook from "./pages/dashboard/EditBook.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -24,6 +25,7 @@ createRoot(document.getElementById("root")).render(
               <Route index element={<ViewBooks />}></Route>
               <Route path="books" element={<ViewBooks />}></Route>
               <Route path="add-book" element={<AddBook />}></Route>
+              <Route path="edit-book/:bookId" element={<EditBook />}></Route>
             </Route>
           </Route>
         </Route>

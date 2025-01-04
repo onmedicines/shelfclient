@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { PlusCircle, Star, BookOpen, Trash } from "lucide-react";
 import StateContext from "../../context/Context";
-import { useNavigate } from "react-router";
+import { useNavigate, Link } from "react-router";
 
 export default function ViewBooks() {
   const navigate = useNavigate();
@@ -133,7 +133,9 @@ export default function ViewBooks() {
             </div>
 
             <div className="px-6 py-3 bg-gray-50 border-t border-gray-100">
-              <button className="text-emerald-600 hover:text-emerald-700 text-sm font-medium">Edit</button>
+              <Link to={`/dashboard/edit-book/${book._id}`} className="text-emerald-600 hover:text-emerald-700 text-sm font-medium">
+                Edit
+              </Link>
             </div>
           </div>
         ))}
