@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import StatusContext from "../../context/Context";
-import { Book, PlusCircle, SquareChevronLeft } from "lucide-react";
+import { Book, PlusCircle, ArrowLeft, Star } from "lucide-react";
 import { useNavigate } from "react-router";
 
 export default function AddBook() {
@@ -48,10 +48,23 @@ export default function AddBook() {
     }
   };
 
+  const renderStarInput = () => {
+    return (
+      <div className="flex justify-between xs:justify-normal xs:gap-6 md:justify-between">
+        {[1, 2, 3, 4, 5].map((star) => (
+          <button key={star} type="button" onClick={() => setBook((prev) => ({ ...prev, rating: star }))} className="focus:outline-none">
+            <Star className={`w-6 h-6 xs:w-8 xs:h-8 ${star <= book.rating ? "fill-yellow-400 text-yellow-400" : "text-gray-300 hover:text-yellow-200"} transition-colors`} />
+          </button>
+        ))}
+      </div>
+    );
+  };
+
   return (
     <main className="max-w-6xl mx-auto px-4 py-6">
-      <button onClick={() => navigate(-1)}>
-        <SquareChevronLeft className="w-6 h-6 sm:w-8 sm:h-8 text-emerald-500 transition-colors duration-200 hover:text-emerald-700" />
+      <button onClick={() => navigate("/dashboard")} className="flex items-center text-emerald-600 hover:text-emerald-700 mb-4">
+        <ArrowLeft className="w-5 h-5 mr-1" />
+        Back to Dashboard
       </button>
       <div className="flex items-center mb-6">
         <div className="flex-1">
@@ -91,7 +104,7 @@ export default function AddBook() {
               <label className="block text-gray-700 text-sm font-medium mb-1" htmlFor="rating">
                 Rating
               </label>
-              <input type="number" id="rating" value={book.rating} onChange={(e) => setBook((prev) => ({ ...prev, rating: e.target.value }))} className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500" min="1" max="5" step="0.1" />
+              {renderStarInput()}
             </div>
           </div>
 
