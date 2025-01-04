@@ -12,6 +12,10 @@ export default function Root() {
     success: "",
   });
 
+  (async () => {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}`);
+  })();
+
   useEffect(() => {
     const timeout = setTimeout(() => {
       setStatus({ ...status, error: "", success: "" });
