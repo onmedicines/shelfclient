@@ -36,6 +36,7 @@ export default function EditBook() {
 
         if (!response.ok) throw new Error(data.message);
         setBook(data);
+        setFormData({ rating: data.rating, review: data.review });
       } catch (error) {
         setStatus({ error: error.message, success: "", isLoading: false });
       }
@@ -59,7 +60,6 @@ export default function EditBook() {
 
       if (!response.ok) throw new Error(data.message);
       setStatus({ error: "", success: "Updated successfully", isLoading: false });
-      setFormData({ rating: "", review: "" });
     } catch (error) {
       setStatus({ error: error.message, success: "", isLoading: false });
     }
