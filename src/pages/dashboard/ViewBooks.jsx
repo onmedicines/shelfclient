@@ -146,7 +146,14 @@ export default function ViewBooks() {
           <BookOpen className="w-16 h-16 text-emerald-500 mx-auto mb-4" />
           <h3 className="text-xl font-bold text-gray-800 mb-2">Your shelf is empty</h3>
           <p className="text-gray-600 mb-4">Start building your collection by adding your first book</p>
-          <button className="px-4 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors duration-200">Add Your First Book</button>
+          <button
+            onClick={() => {
+              navigate("/dashboard/add-book");
+            }}
+            to="/dashboard/add-book"
+            className="px-4 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors duration-200">
+            Add Your First Book
+          </button>
         </div>
       )}
     </main>
