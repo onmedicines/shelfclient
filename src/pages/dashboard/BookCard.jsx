@@ -12,7 +12,6 @@ export default function BookCard({ book, onDelete, capitalizeSentence }) {
   return (
     <div className="relative w-full h-[350px] perspective-1000">
       <div className={`w-full h-full transition-transform duration-700 transform-style-preserve-3d relative ${isFlipped ? "rotate-y-180" : ""}`}>
-        {/* Front of card */}
         <div className="absolute w-full h-full backface-hidden bg-white rounded-lg shadow-md overflow-hidden flex flex-col justify-between">
           <div className="p-6">
             <div className="flex items-start justify-between">
@@ -63,7 +62,6 @@ export default function BookCard({ book, onDelete, capitalizeSentence }) {
           </div>
         </div>
 
-        {/* Back of card */}
         <div className="absolute w-full h-full backface-hidden bg-white rounded-lg shadow-md overflow-hidden flex flex-col rotate-y-180">
           <div className="p-6 flex flex-col h-full">
             <div className="flex items-center justify-between mb-4">

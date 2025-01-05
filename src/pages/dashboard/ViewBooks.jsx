@@ -8,17 +8,7 @@ export default function ViewBooks() {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
   const { setStatus } = useContext(StateContext);
-  const [books, setBooks] = useState([
-    {
-      name: "",
-      pages: "",
-      author: "",
-      genre: [],
-      username: "",
-      rating: "",
-      review: "",
-    },
-  ]);
+  const [books, setBooks] = useState([]);
 
   useEffect(() => {
     getBooks();

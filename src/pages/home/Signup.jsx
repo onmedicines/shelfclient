@@ -24,7 +24,6 @@ export default function Signup() {
       if (formData.password.length < 6) throw new Error("Password must be at least 6 characters");
       if (!formData.email.includes("@")) throw new Error("Please enter a valid email");
 
-      console.log(formData); // to remove
       setStatus({ error: "", success: "", isLoading: true });
       const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/register`, {
         method: "post",

@@ -60,6 +60,8 @@ export default function EditBook() {
 
       if (!response.ok) throw new Error(data.message);
       setStatus({ error: "", success: "Updated successfully", isLoading: false });
+
+      navigate("/dashboard");
     } catch (error) {
       setStatus({ error: error.message, success: "", isLoading: false });
     }
