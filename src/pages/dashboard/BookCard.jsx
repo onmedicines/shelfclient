@@ -17,8 +17,8 @@ export default function BookCard({ book, onDelete, capitalizeSentence }) {
           <div className="p-6">
             <div className="flex items-start justify-between">
               <div className="flex-1">
-                <h3 className="text-lg font-bold text-gray-800 mb-1">{capitalizeSentence(book.name) || "Untitled"}</h3>
-                <p className="text-gray-600 mb-2">by {capitalizeSentence(book.author) || "Unknown Author"}</p>
+                <h3 className="text-lg font-bold text-gray-800 mb-1 line-clamp-2">{capitalizeSentence(book.name) || "Untitled"}</h3>
+                <p className="text-gray-600 mb-2 line-clamp-2">by {capitalizeSentence(book.author) || "Unknown Author"}</p>
               </div>
               <button onClick={() => onDelete(book._id)} className="p-2 bg-emerald-50 rounded-full">
                 <Trash className="w-4 h-4 text-red-500 hover:text-red-700" />
@@ -29,11 +29,22 @@ export default function BookCard({ book, onDelete, capitalizeSentence }) {
 
             {book.genre && book.genre.length > 0 && (
               <div className="flex flex-wrap gap-2 mb-3">
-                {book.genre.map((g, i) => (
-                  <span key={i} className="px-2 py-1 bg-emerald-50 text-emerald-600 text-sm rounded-full">
-                    {g}
-                  </span>
-                ))}
+                {book.genre.length <= 3 ? (
+                  book.genre.map((g, i) => (
+                    <span key={i} className="px-2 py-1 bg-emerald-50 text-emerald-600 text-sm rounded-full">
+                      {g}
+                    </span>
+                  ))
+                ) : (
+                  <>
+                    {[1, 2, 3].map((_, i) => (
+                      <span key={i} className="px-2 py-1 bg-emerald-50 text-emerald-600 text-sm rounded-full">
+                        {book.genre[i]}
+                      </span>
+                    ))}
+                    <span>...</span>
+                  </>
+                )}
               </div>
             )}
 
@@ -62,7 +73,14 @@ export default function BookCard({ book, onDelete, capitalizeSentence }) {
               </button>
             </div>
 
-            <div className="flex-1 overflow-y-auto pr-2">
+            <div className="flex-1 pr-2 overflow-y-auto">
+              <div className="flex flex-wrap mb-4 gap-2">
+                {book.genre.map((g, i) => (
+                  <span key={i} className="px-2 py-1 bg-emerald-50 text-emerald-600 text-sm rounded-full">
+                    {g}
+                  </span>
+                ))}
+              </div>
               <p className="text-gray-600">{book.review || "No review available"}</p>
             </div>
           </div>
